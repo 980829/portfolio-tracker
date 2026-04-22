@@ -36,7 +36,7 @@
   .btn-logout { background:rgba(255,77,109,0.1); border:1px solid rgba(255,77,109,0.2); color:var(--red); border-radius:8px; padding:6px 12px; font-size:11px; cursor:pointer; font-family:'Space Mono',monospace; }
 
   /* GITHUB SETUP BANNER */
-  .gh-banner { display:none !important; }
+  .gh-banner { background:rgba(123,94,167,0.1); border:1px solid rgba(123,94,167,0.3); border-radius:12px; padding:14px; margin-bottom:14px; }
   .gh-banner h4 { font-size:13px; margin-bottom:8px; color:#a78bfa; }
   .gh-banner p { font-size:11px; color:var(--muted); line-height:1.6; margin-bottom:10px; }
   .gh-status { display:flex; align-items:center; gap:6px; font-size:11px; font-family:'Space Mono',monospace; }
@@ -286,12 +286,7 @@ const GH_STORAGE_KEY = 'portfolio_gh_config';
 let ADMIN_PIN = '1234';
 let pinInput = '';
 let data = {};
-let ghConfig = {
-  user: '980829',
-  repo: 'portfolio-tracker',
-  token: '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',
-  path: 'portfolio-data.js'
-};
+let ghConfig = {};
 const COLORS = ['#00e5a0','#4cc9f0','#ffd166','#f72585','#7b5ea7','#ff9f1c','#06d6a0','#ef476f','#118ab2','#a8dadc'];
 let selectedColor = COLORS[0];
 
@@ -334,7 +329,17 @@ function logout() {
 
 // ─── GITHUB CONFIG ─────────────────────────────────────
 function loadGhConfig() {
-  updateGhStatus();
+  try {
+    const saved = localStorage.getItem(GH_STORAGE_KEY);
+    if (saved) {
+      ghConfig = JSON.parse(saved);
+      document.getElementById('ghUser').value = ghConfig.user || '';
+      document.getElementById('ghRepo').value = ghConfig.repo || '';
+      document.getElementById('ghToken').value = ghConfig.token || '';
+      document.getElementById('ghPath').value = ghConfig.path || 'portfolio-data.js';
+      updateGhStatus();
+    }
+  } catch(e) {}
 }
 function saveGhConfig() {
   const user = document.getElementById('ghUser').value.trim();
