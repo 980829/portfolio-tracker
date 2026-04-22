@@ -15,10 +15,7 @@
   body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; min-height:100vh; padding:16px; }
 
   /* PIN SCREEN */
-  #pinScreen {
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    min-height:100vh; gap:24px;
-  }
+  #pinScreen { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; gap:24px; }
   .pin-title { font-size:24px; font-weight:800; }
   .pin-title span { color:var(--green); }
   .pin-dots { display:flex; gap:14px; }
@@ -26,26 +23,30 @@
   .pin-dot.filled { background:var(--green); border-color:var(--green); }
   .pin-dot.error { background:var(--red); border-color:var(--red); }
   .pin-pad { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; width:240px; }
-  .pin-btn {
-    background:var(--surface); border:1px solid var(--border); border-radius:12px;
-    color:var(--text); font-family:'Space Mono',monospace; font-size:20px; font-weight:700;
-    padding:16px; cursor:pointer; transition:all 0.15s; text-align:center;
-  }
+  .pin-btn { background:var(--surface); border:1px solid var(--border); border-radius:12px; color:var(--text); font-family:'Space Mono',monospace; font-size:20px; font-weight:700; padding:16px; cursor:pointer; transition:all 0.15s; text-align:center; }
   .pin-btn:active { background:var(--surface2); transform:scale(0.95); }
   .pin-btn.del { font-size:14px; color:var(--muted); }
   .pin-err { font-size:12px; color:var(--red); height:16px; font-family:'Space Mono',monospace; }
 
   /* ADMIN SCREEN */
-  #adminScreen { display:none; max-width:480px; margin:0 auto; }
+  #adminScreen { display:none; max-width:480px; margin:0 auto; padding-bottom:40px; }
   .adm-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--border); }
   .adm-header h1 { font-size:20px; font-weight:800; }
   .adm-header h1 span { color:var(--green); }
   .btn-logout { background:rgba(255,77,109,0.1); border:1px solid rgba(255,77,109,0.2); color:var(--red); border-radius:8px; padding:6px 12px; font-size:11px; cursor:pointer; font-family:'Space Mono',monospace; }
 
+  /* GITHUB SETUP BANNER */
+  .gh-banner { background:rgba(123,94,167,0.1); border:1px solid rgba(123,94,167,0.3); border-radius:12px; padding:14px; margin-bottom:14px; }
+  .gh-banner h4 { font-size:13px; margin-bottom:8px; color:#a78bfa; }
+  .gh-banner p { font-size:11px; color:var(--muted); line-height:1.6; margin-bottom:10px; }
+  .gh-status { display:flex; align-items:center; gap:6px; font-size:11px; font-family:'Space Mono',monospace; }
+  .gh-dot { width:8px; height:8px; border-radius:50%; }
+  .gh-dot.ok { background:var(--green); }
+  .gh-dot.no { background:var(--red); }
+
   /* CARDS */
-  .card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px; margin-bottom:14px; }
-  .card h3 { font-size:13px; font-weight:700; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
-  .card h3 .tag { font-size:10px; color:var(--muted); font-weight:400; font-family:'Space Mono',monospace; }
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px; margin-bottom:12px; }
+  .card h3 { font-size:13px; font-weight:700; margin-bottom:14px; }
 
   /* FORM */
   .form-row { display:grid; gap:8px; margin-bottom:10px; }
@@ -53,73 +54,72 @@
   .r3 { grid-template-columns:1fr 1fr 1fr; }
   .form-group { display:flex; flex-direction:column; gap:4px; }
   .form-group label { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.8px; }
-  input[type=text], input[type=number], input[type=date], select {
+  input[type=text], input[type=number], input[type=password] {
     background:var(--surface2); border:1px solid var(--border); border-radius:8px;
     padding:9px 10px; color:var(--text); font-family:'Space Mono',monospace;
-    font-size:12px; width:100%; outline:none; transition:border-color 0.2s;
-    -webkit-appearance:none;
+    font-size:12px; width:100%; outline:none; transition:border-color 0.2s; -webkit-appearance:none;
   }
-  input:focus, select:focus { border-color:var(--green); }
+  input:focus { border-color:var(--green); }
   input::placeholder { color:var(--muted); }
-  select option { background:var(--surface2); }
-  input[type=date]::-webkit-calendar-picker-indicator { filter:invert(0.5); }
 
+  /* BUTTONS */
   .btn { width:100%; padding:12px; border:none; border-radius:10px; font-family:'Syne',sans-serif; font-size:14px; font-weight:700; cursor:pointer; transition:all 0.15s; }
   .btn:active { transform:scale(0.98); }
+  .btn:disabled { opacity:0.4; cursor:not-allowed; }
   .btn-primary { background:linear-gradient(135deg,var(--accent),#5e3fa3); color:white; }
   .btn-green { background:linear-gradient(135deg,#00c48c,#007a57); color:white; }
-  .btn-red { background:rgba(255,77,109,0.15); color:var(--red); border:1px solid rgba(255,77,109,0.3); }
-
-  /* STOCK LIST EDIT */
-  .stock-item { background:var(--surface2); border-radius:10px; padding:12px; margin-bottom:8px; border:1px solid var(--border); }
-  .si-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
-  .si-ticker { font-size:16px; font-weight:800; }
-  .si-meta { font-size:10px; color:var(--muted); font-family:'Space Mono',monospace; }
-  .si-actions { display:flex; gap:6px; }
+  .btn-deploy { background:linear-gradient(135deg,#f72585,#b5179e); color:white; margin-top:6px; }
   .btn-sm { padding:4px 10px; border-radius:6px; font-size:11px; cursor:pointer; font-family:'Space Mono',monospace; border:none; transition:all 0.15s; }
   .btn-sm:active { transform:scale(0.95); }
   .btn-edit { background:rgba(123,94,167,0.2); color:#a78bfa; }
   .btn-del { background:rgba(255,77,109,0.15); color:var(--red); }
 
+  /* STOCK ITEM */
+  .stock-item { background:var(--surface2); border-radius:10px; padding:12px; margin-bottom:8px; border:1px solid var(--border); }
+  .si-head { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px; }
+  .si-ticker { font-size:16px; font-weight:800; }
+  .si-name { font-size:11px; color:var(--text); font-weight:600; margin-bottom:3px; }
+  .si-meta { font-size:10px; color:var(--muted); font-family:'Space Mono',monospace; }
+  .si-actions { display:flex; gap:6px; flex-shrink:0; margin-left:8px; }
+
   /* INLINE EDIT */
   .inline-edit { display:none; margin-top:10px; padding-top:10px; border-top:1px solid var(--border); }
   .inline-edit.open { display:block; }
 
-  /* TOAST */
-  .toast {
-    position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(100px);
-    background:var(--green); color:#000; font-family:'Space Mono',monospace;
-    font-size:12px; font-weight:700; padding:10px 20px; border-radius:20px;
-    transition:transform 0.3s; z-index:999; white-space:nowrap;
-  }
-  .toast.show { transform:translateX(-50%) translateY(0); }
-  .toast.err { background:var(--red); color:white; }
+  /* SECTION TITLE */
+  .sec-title { font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--muted); margin:16px 0 10px; }
 
-  /* CODE OUTPUT */
-  .code-box {
-    background:#000; border:1px solid var(--border); border-radius:10px;
-    padding:14px; font-family:'Space Mono',monospace; font-size:11px;
-    color:#00e5a0; white-space:pre; overflow-x:auto; margin-top:10px;
-    max-height:300px; overflow-y:auto; line-height:1.6;
-  }
-  .btn-copy { background:var(--surface2); border:1px solid var(--border); color:var(--text); border-radius:8px; padding:8px 14px; font-size:12px; cursor:pointer; font-family:'Space Mono',monospace; margin-top:8px; width:100%; }
-  .btn-copy:hover { border-color:var(--green); }
-
-  .sec-title { font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--muted); margin:18px 0 10px; }
-  .divider { border:none; border-top:1px solid var(--border); margin:16px 0; }
-
+  /* COLOR PICKER */
   .color-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:4px; }
   .color-opt { width:28px; height:28px; border-radius:6px; cursor:pointer; border:2px solid transparent; transition:all 0.15s; }
   .color-opt.selected { border-color:white; transform:scale(1.1); }
+
+  /* DEPLOY STATUS */
+  .deploy-status { border-radius:10px; padding:12px 14px; margin-top:10px; font-size:12px; font-family:'Space Mono',monospace; display:none; }
+  .deploy-status.loading { background:rgba(255,209,102,0.1); border:1px solid rgba(255,209,102,0.3); color:var(--yellow); display:block; }
+  .deploy-status.success { background:rgba(0,229,160,0.1); border:1px solid rgba(0,229,160,0.3); color:var(--green); display:block; }
+  .deploy-status.error { background:rgba(255,77,109,0.1); border:1px solid rgba(255,77,109,0.3); color:var(--red); display:block; }
+
+  /* DIVIDER */
+  hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
+
+  /* TOAST */
+  .toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(100px); background:var(--green); color:#000; font-family:'Space Mono',monospace; font-size:12px; font-weight:700; padding:10px 20px; border-radius:20px; transition:transform 0.3s; z-index:999; white-space:nowrap; }
+  .toast.show { transform:translateX(-50%) translateY(0); }
+  .toast.err { background:var(--red); color:white; }
+
+  /* LOADING SPINNER */
+  .spinner { display:inline-block; width:14px; height:14px; border:2px solid rgba(255,255,255,0.3); border-top-color:white; border-radius:50%; animation:spin 0.7s linear infinite; vertical-align:middle; margin-right:6px; }
+  @keyframes spin { to { transform:rotate(360deg); } }
 </style>
 </head>
 <body>
 
 <!-- PIN SCREEN -->
 <div id="pinScreen">
-  <div>
+  <div style="text-align:center;">
     <div class="pin-title">Admin <span>Panel</span></div>
-    <div style="font-size:12px;color:var(--muted);margin-top:4px;font-family:'Space Mono',monospace;">Masukkan PIN 4 digit</div>
+    <div style="font-size:12px;color:var(--muted);margin-top:4px;font-family:'Space Mono',monospace;">Portfolio Tracker</div>
   </div>
   <div class="pin-dots" id="pinDots">
     <div class="pin-dot" id="d0"></div>
@@ -149,9 +149,34 @@
   <div class="adm-header">
     <div>
       <h1>Admin <span>Panel</span></h1>
-      <div style="font-size:11px;color:var(--muted);margin-top:2px;">Portfolio Tracker</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px;" id="ghStatusText">GitHub: belum setup</div>
     </div>
     <button class="btn-logout" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- GITHUB SETUP -->
+  <div class="gh-banner" id="ghSetupBanner">
+    <h4>🔗 Setup GitHub (sekali saja)</h4>
+    <p>Isi data GitHub untuk enable auto-deploy. Perubahan akan langsung ter-push ke repo dan Vercel otomatis update.</p>
+    <div class="form-row r2" style="margin-bottom:8px;">
+      <div class="form-group">
+        <label>Username GitHub</label>
+        <input type="text" id="ghUser" placeholder="980829">
+      </div>
+      <div class="form-group">
+        <label>Nama Repo</label>
+        <input type="text" id="ghRepo" placeholder="portfolio-tracker">
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom:10px;">
+      <label>Personal Access Token</label>
+      <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx">
+    </div>
+    <div class="form-group" style="margin-bottom:10px;">
+      <label>Path file (biasanya portfolio-data.js)</label>
+      <input type="text" id="ghPath" placeholder="portfolio-data.js" value="portfolio-data.js">
+    </div>
+    <button class="btn btn-primary" onclick="saveGhConfig()">💾 Simpan Konfigurasi</button>
   </div>
 
   <!-- GLOBAL SETTINGS -->
@@ -177,8 +202,8 @@
         <input type="number" id="gIhsg1W" step="0.01" placeholder="-1.52">
       </div>
       <div class="form-group">
-        <label>PIN (4 digit)</label>
-        <input type="number" id="gPin" placeholder="****" maxlength="4">
+        <label>PIN Baru</label>
+        <input type="number" id="gPin" placeholder="1234" maxlength="4">
       </div>
     </div>
   </div>
@@ -199,6 +224,10 @@
         <label>Jumlah Lot</label>
         <input type="number" id="nLot" placeholder="10" min="1">
       </div>
+    </div>
+    <div class="form-group" style="margin-bottom:10px;">
+      <label>Nama Perusahaan</label>
+      <input type="text" id="nName" placeholder="Bank Rakyat Indonesia">
     </div>
     <div class="form-row r3">
       <div class="form-group">
@@ -235,14 +264,14 @@
     <button class="btn btn-green" onclick="addStock()">+ Tambah Saham</button>
   </div>
 
-  <hr class="divider">
+  <hr>
 
-  <!-- GENERATE CODE -->
+  <!-- DEPLOY BUTTON -->
   <div class="card">
-    <h3>📋 Generate File Data <span class="tag">salin ke portfolio-data.js</span></h3>
-    <button class="btn btn-primary" onclick="generateCode()">Generate portfolio-data.js</button>
-    <div class="code-box" id="codeOutput" style="display:none"></div>
-    <button class="btn-copy" id="btnCopy" style="display:none" onclick="copyCode()">📋 Salin Kode</button>
+    <h3>🚀 Simpan & Deploy</h3>
+    <p style="font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.6;">Semua perubahan (tambah, edit, hapus saham + pengaturan global) akan langsung di-push ke GitHub dan Vercel otomatis update dalam ~30 detik.</p>
+    <button class="btn btn-deploy" id="btnDeploy" onclick="deployToGitHub()">🚀 Simpan & Deploy ke Vercel</button>
+    <div class="deploy-status" id="deployStatus"></div>
   </div>
 
   <div style="height:40px"></div>
@@ -252,240 +281,303 @@
 
 <script src="portfolio-data.js"></script>
 <script>
-  // ─── PIN ───────────────────────────────────────────
-  let ADMIN_PIN = '1234'; // default, akan dioverride dari data
-  let pinInput = '';
+// ─── CONFIG ───────────────────────────────────────────
+const GH_STORAGE_KEY = 'portfolio_gh_config';
+let ADMIN_PIN = '1234';
+let pinInput = '';
+let data = {};
+let ghConfig = {};
+const COLORS = ['#00e5a0','#4cc9f0','#ffd166','#f72585','#7b5ea7','#ff9f1c','#06d6a0','#ef476f','#118ab2','#a8dadc'];
+let selectedColor = COLORS[0];
 
-  function pinPress(d) {
-    if (pinInput.length >= 4) return;
-    pinInput += d;
-    updateDots();
-    if (pinInput.length === 4) checkPin();
+// ─── PIN ───────────────────────────────────────────────
+function pinPress(d) {
+  if (pinInput.length >= 4) return;
+  pinInput += d;
+  updateDots();
+  if (pinInput.length === 4) checkPin();
+}
+function pinDel() {
+  pinInput = pinInput.slice(0,-1);
+  updateDots();
+  document.getElementById('pinErr').textContent = '';
+}
+function updateDots() {
+  for (let i=0;i<4;i++) {
+    const dot = document.getElementById('d'+i);
+    dot.classList.remove('filled','error');
+    if (i < pinInput.length) dot.classList.add('filled');
   }
-
-  function pinDel() {
-    pinInput = pinInput.slice(0,-1);
-    updateDots();
-    document.getElementById('pinErr').textContent = '';
+}
+function checkPin() {
+  if (typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.adminPin) ADMIN_PIN = PORTFOLIO_DATA.adminPin;
+  if (pinInput === ADMIN_PIN) {
+    document.getElementById('pinScreen').style.display = 'none';
+    document.getElementById('adminScreen').style.display = 'block';
+    loadData();
+  } else {
+    for (let i=0;i<4;i++) { const d=document.getElementById('d'+i); d.classList.remove('filled'); d.classList.add('error'); }
+    document.getElementById('pinErr').textContent = 'PIN salah, coba lagi';
+    setTimeout(() => { pinInput=''; updateDots(); document.getElementById('pinErr').textContent=''; }, 1000);
   }
+}
+function logout() {
+  pinInput=''; updateDots();
+  document.getElementById('adminScreen').style.display='none';
+  document.getElementById('pinScreen').style.display='flex';
+}
 
-  function updateDots() {
-    for (let i=0;i<4;i++) {
-      const dot = document.getElementById('d'+i);
-      dot.classList.remove('filled','error');
-      if (i < pinInput.length) dot.classList.add('filled');
+// ─── GITHUB CONFIG ─────────────────────────────────────
+function loadGhConfig() {
+  try {
+    const saved = localStorage.getItem(GH_STORAGE_KEY);
+    if (saved) {
+      ghConfig = JSON.parse(saved);
+      document.getElementById('ghUser').value = ghConfig.user || '';
+      document.getElementById('ghRepo').value = ghConfig.repo || '';
+      document.getElementById('ghToken').value = ghConfig.token || '';
+      document.getElementById('ghPath').value = ghConfig.path || 'portfolio-data.js';
+      updateGhStatus();
     }
+  } catch(e) {}
+}
+function saveGhConfig() {
+  const user = document.getElementById('ghUser').value.trim();
+  const repo = document.getElementById('ghRepo').value.trim();
+  const token = document.getElementById('ghToken').value.trim();
+  const path = document.getElementById('ghPath').value.trim() || 'portfolio-data.js';
+  if (!user || !repo || !token) { showToast('⚠️ Lengkapi semua field GitHub!', true); return; }
+  ghConfig = { user, repo, token, path };
+  localStorage.setItem(GH_STORAGE_KEY, JSON.stringify(ghConfig));
+  updateGhStatus();
+  showToast('✅ Konfigurasi GitHub disimpan!');
+}
+function updateGhStatus() {
+  const el = document.getElementById('ghStatusText');
+  const banner = document.getElementById('ghSetupBanner');
+  if (ghConfig.user && ghConfig.repo && ghConfig.token) {
+    el.innerHTML = `<span style="color:var(--green)">● GitHub: ${ghConfig.user}/${ghConfig.repo}</span>`;
+    banner.style.display = 'none';
+  } else {
+    el.innerHTML = `<span style="color:var(--red)">● GitHub: belum setup</span>`;
+    banner.style.display = 'block';
+  }
+}
+
+// ─── DATA ──────────────────────────────────────────────
+function loadData() {
+  data = JSON.parse(JSON.stringify(PORTFOLIO_DATA));
+  if (!data.adminPin) data.adminPin = '1234';
+  document.getElementById('gOwner').value = data.owner || '';
+  document.getElementById('gLastUpdate').value = data.lastUpdate || '';
+  document.getElementById('gPort1W').value = data.port1W || '';
+  document.getElementById('gIhsg1W').value = data.ihsg1W || '';
+  document.getElementById('gPin').value = '';
+  buildColorPicker();
+  renderStockList();
+  loadGhConfig();
+}
+
+function buildColorPicker() {
+  const cp = document.getElementById('colorPicker');
+  cp.innerHTML = '';
+  COLORS.forEach(c => {
+    const d = document.createElement('div');
+    d.className = 'color-opt';
+    d.style.background = c;
+    d.dataset.color = c;
+    d.onclick = () => selectColor(c);
+    cp.appendChild(d);
+  });
+  selectColor(COLORS[0]);
+}
+function selectColor(c) {
+  selectedColor = c;
+  document.querySelectorAll('.color-opt').forEach(d => d.classList.toggle('selected', d.dataset.color===c));
+}
+
+function renderStockList() {
+  const el = document.getElementById('stockEditList');
+  el.innerHTML = '';
+  if (!data.stocks || data.stocks.length===0) {
+    el.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:12px;padding:20px;background:var(--surface);border-radius:12px;border:1px solid var(--border);">Belum ada saham</div>';
+    return;
+  }
+  data.stocks.forEach((s,i) => {
+    const capPct = ((s.currentPrice-s.avgPrice)/s.avgPrice*100);
+    const div = document.createElement('div');
+    div.className = 'stock-item';
+    div.id = 'si_'+i;
+    div.innerHTML = `
+      <div class="si-head">
+        <div style="flex:1;min-width:0;">
+          <div class="si-ticker" style="color:${s.color}">${s.ticker}</div>
+          <div class="si-name">${s.companyName||'-'}</div>
+          <div class="si-meta">${s.lot} lot · avg Rp${s.avgPrice.toLocaleString()} · skrg Rp${s.currentPrice.toLocaleString()} <span style="color:${capPct>=0?'var(--green)':'var(--red)'}">(${capPct>=0?'+':''}${capPct.toFixed(1)}%)</span></div>
+        </div>
+        <div class="si-actions">
+          <button class="btn-sm btn-edit" onclick="toggleEdit(${i})">Edit</button>
+          <button class="btn-sm btn-del" onclick="deleteStock(${i})">Hapus</button>
+        </div>
+      </div>
+      <div class="inline-edit" id="ie_${i}">
+        <div class="form-group" style="margin-bottom:8px;">
+          <label>Nama Perusahaan</label>
+          <input type="text" id="e${i}_name" value="${s.companyName||''}">
+        </div>
+        <div class="form-row r2">
+          <div class="form-group"><label>Lot</label><input type="number" id="e${i}_lot" value="${s.lot}" min="1"></div>
+          <div class="form-group"><label>Avg Price</label><input type="number" id="e${i}_avg" value="${s.avgPrice}"></div>
+        </div>
+        <div class="form-row r3">
+          <div class="form-group"><label>Harga Skrg</label><input type="number" id="e${i}_cur" value="${s.currentPrice}"></div>
+          <div class="form-group"><label>TP1</label><input type="number" id="e${i}_tp1" value="${s.tp1}"></div>
+          <div class="form-group"><label>TP2</label><input type="number" id="e${i}_tp2" value="${s.tp2}"></div>
+        </div>
+        <div class="form-row r2">
+          <div class="form-group"><label>Dividen/saham</label><input type="number" id="e${i}_div" value="${s.dividen||0}"></div>
+          <div class="form-group"><label>Tgl Dividen</label><input type="text" id="e${i}_divdate" value="${s.dividenDate||''}" placeholder="8 Mei 2026"></div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:4px;" onclick="saveStock(${i})">💾 Simpan Perubahan</button>
+      </div>`;
+    el.appendChild(div);
+  });
+}
+
+function toggleEdit(i) { document.getElementById('ie_'+i).classList.toggle('open'); }
+
+function saveStock(i) {
+  const s = data.stocks[i];
+  s.companyName = document.getElementById(`e${i}_name`).value || s.companyName;
+  s.lot = parseInt(document.getElementById(`e${i}_lot`).value) || s.lot;
+  s.avgPrice = parseFloat(document.getElementById(`e${i}_avg`).value) || s.avgPrice;
+  s.currentPrice = parseFloat(document.getElementById(`e${i}_cur`).value) || s.currentPrice;
+  s.tp1 = parseFloat(document.getElementById(`e${i}_tp1`).value) || s.tp1;
+  s.tp2 = parseFloat(document.getElementById(`e${i}_tp2`).value) || s.tp2;
+  s.dividen = parseFloat(document.getElementById(`e${i}_div`).value) || 0;
+  s.dividenDate = document.getElementById(`e${i}_divdate`).value || '';
+  document.getElementById('ie_'+i).classList.remove('open');
+  renderStockList();
+  showToast('✅ '+s.ticker+' disimpan! Tap Deploy untuk update.');
+}
+
+function deleteStock(i) {
+  const ticker = data.stocks[i].ticker;
+  if (!confirm('Hapus '+ticker+' dari portfolio?')) return;
+  data.stocks.splice(i,1);
+  renderStockList();
+  showToast('🗑️ '+ticker+' dihapus! Tap Deploy untuk update.', false);
+}
+
+function addStock() {
+  const ticker = document.getElementById('nTicker').value.trim().toUpperCase();
+  const companyName = document.getElementById('nName').value.trim();
+  const lot = parseInt(document.getElementById('nLot').value);
+  const avg = parseFloat(document.getElementById('nAvg').value);
+  const cur = parseFloat(document.getElementById('nCurrent').value);
+  const tp1 = parseFloat(document.getElementById('nTp1').value);
+  const tp2 = parseFloat(document.getElementById('nTp2').value);
+  const div = parseFloat(document.getElementById('nDiv').value) || 0;
+  const divDate = document.getElementById('nDivDate').value.trim();
+  if (!ticker||!lot||!avg||!cur) { showToast('⚠️ Lengkapi data dulu!', true); return; }
+  if (data.stocks.find(s=>s.ticker===ticker)) { showToast('⚠️ '+ticker+' sudah ada!', true); return; }
+  data.stocks.push({ ticker, companyName, lot, avgPrice:avg, currentPrice:cur, tp1:tp1||Math.round(cur*1.1), tp2:tp2||Math.round(cur*1.3), color:selectedColor, dividen:div, dividenDate:divDate });
+  ['nTicker','nName','nLot','nAvg','nCurrent','nTp1','nTp2','nDiv','nDivDate'].forEach(id=>document.getElementById(id).value='');
+  renderStockList();
+  showToast('✅ '+ticker+' ditambahkan! Tap Deploy untuk update.');
+}
+
+// ─── GITHUB DEPLOY ─────────────────────────────────────
+async function deployToGitHub() {
+  // Collect global settings
+  const owner = document.getElementById('gOwner').value || data.owner;
+  const lastUpdate = document.getElementById('gLastUpdate').value || data.lastUpdate;
+  const port1W = parseFloat(document.getElementById('gPort1W').value);
+  const ihsg1W = parseFloat(document.getElementById('gIhsg1W').value);
+  const newPin = document.getElementById('gPin').value;
+
+  data.owner = owner;
+  data.lastUpdate = lastUpdate;
+  if (!isNaN(port1W)) data.port1W = port1W;
+  if (!isNaN(ihsg1W)) data.ihsg1W = ihsg1W;
+  if (newPin && newPin.length===4) { data.adminPin = newPin; ADMIN_PIN = newPin; }
+
+  if (!ghConfig.user || !ghConfig.repo || !ghConfig.token) {
+    showToast('⚠️ Setup GitHub dulu!', true);
+    document.getElementById('ghSetupBanner').style.display = 'block';
+    document.getElementById('ghSetupBanner').scrollIntoView({behavior:'smooth'});
+    return;
   }
 
-  function checkPin() {
-    // Load PIN dari data jika ada
-    if (typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.adminPin) {
-      ADMIN_PIN = PORTFOLIO_DATA.adminPin;
+  const btn = document.getElementById('btnDeploy');
+  const status = document.getElementById('deployStatus');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Mendeploy...';
+  status.className = 'deploy-status loading';
+  status.textContent = '⏳ Menghubungi GitHub...';
+  status.style.display = 'block';
+
+  try {
+    const { user, repo, token, path } = ghConfig;
+
+    // Generate file content
+    const content = `// ============================================================\n// DATA PORTFOLIO — di-generate otomatis via admin panel\n// Last deploy: ${new Date().toLocaleString('id-ID')}\n// ============================================================\nconst PORTFOLIO_DATA = ${JSON.stringify(data, null, 2)};\n`;
+
+    // Get current file SHA (required for update)
+    status.textContent = '⏳ Mengambil data file...';
+    const getRes = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/${path}`, {
+      headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+
+    let sha = null;
+    if (getRes.ok) {
+      const fileData = await getRes.json();
+      sha = fileData.sha;
     }
-    if (pinInput === ADMIN_PIN) {
-      document.getElementById('pinScreen').style.display = 'none';
-      document.getElementById('adminScreen').style.display = 'block';
-      loadData();
+
+    // Push to GitHub
+    status.textContent = '⏳ Push ke GitHub...';
+    const body = {
+      message: `Update portfolio data - ${new Date().toLocaleString('id-ID')}`,
+      content: btoa(unescape(encodeURIComponent(content))),
+      ...(sha && { sha })
+    };
+
+    const putRes = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/${path}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+
+    if (putRes.ok) {
+      status.className = 'deploy-status success';
+      status.textContent = '✅ Berhasil! Vercel sedang redeploy (~30 detik). Refresh dashboard untuk melihat perubahan.';
+      showToast('🚀 Deploy berhasil!');
     } else {
-      for (let i=0;i<4;i++) {
-        const dot = document.getElementById('d'+i);
-        dot.classList.remove('filled');
-        dot.classList.add('error');
-      }
-      document.getElementById('pinErr').textContent = 'PIN salah, coba lagi';
-      setTimeout(() => {
-        pinInput = '';
-        updateDots();
-        document.getElementById('pinErr').textContent = '';
-      }, 1000);
+      const err = await putRes.json();
+      throw new Error(err.message || 'Push gagal');
     }
+  } catch(e) {
+    status.className = 'deploy-status error';
+    status.textContent = '❌ Error: ' + e.message;
+    showToast('❌ Deploy gagal!', true);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '🚀 Simpan & Deploy ke Vercel';
   }
+}
 
-  function logout() {
-    pinInput = '';
-    updateDots();
-    document.getElementById('adminScreen').style.display = 'none';
-    document.getElementById('pinScreen').style.display = 'flex';
-  }
-
-  // ─── DATA ──────────────────────────────────────────
-  let data = {};
-
-  const COLORS = ['#00e5a0','#4cc9f0','#ffd166','#f72585','#7b5ea7','#ff9f1c','#06d6a0','#ef476f','#118ab2','#a8dadc'];
-
-  function loadData() {
-    data = JSON.parse(JSON.stringify(PORTFOLIO_DATA));
-    if (!data.adminPin) data.adminPin = '1234';
-
-    // Global fields
-    document.getElementById('gOwner').value = data.owner || '';
-    document.getElementById('gLastUpdate').value = data.lastUpdate || '';
-    document.getElementById('gPort1W').value = data.port1W || '';
-    document.getElementById('gIhsg1W').value = data.ihsg1W || '';
-    document.getElementById('gPin').value = data.adminPin || '';
-
-    // Color picker
-    buildColorPicker();
-    renderStockList();
-  }
-
-  function buildColorPicker() {
-    const cp = document.getElementById('colorPicker');
-    cp.innerHTML = '';
-    COLORS.forEach(c => {
-      const d = document.createElement('div');
-      d.className = 'color-opt';
-      d.style.background = c;
-      d.dataset.color = c;
-      d.onclick = () => selectColor(c);
-      cp.appendChild(d);
-    });
-    // default select first
-    selectColor(COLORS[0]);
-  }
-
-  let selectedColor = COLORS[0];
-  function selectColor(c) {
-    selectedColor = c;
-    document.querySelectorAll('.color-opt').forEach(d => {
-      d.classList.toggle('selected', d.dataset.color === c);
-    });
-  }
-
-  function renderStockList() {
-    const el = document.getElementById('stockEditList');
-    el.innerHTML = '';
-    if (!data.stocks || data.stocks.length === 0) {
-      el.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:12px;padding:20px;">Belum ada saham</div>';
-      return;
-    }
-    data.stocks.forEach((s,i) => {
-      const capPct = ((s.currentPrice - s.avgPrice)/s.avgPrice*100);
-      const div = document.createElement('div');
-      div.className = 'stock-item';
-      div.id = 'si_'+i;
-      div.innerHTML = `
-        <div class="si-head">
-          <div>
-            <div class="si-ticker" style="color:${s.color}">${s.ticker}</div>
-            <div class="si-meta">${s.lot} lot · avg Rp${s.avgPrice.toLocaleString()} · skrg Rp${s.currentPrice.toLocaleString()} <span style="color:${capPct>=0?'var(--green)':'var(--red)'}">(${capPct>=0?'+':''}${capPct.toFixed(1)}%)</span></div>
-          </div>
-          <div class="si-actions">
-            <button class="btn-sm btn-edit" onclick="toggleEdit(${i})">Edit</button>
-            <button class="btn-sm btn-del" onclick="deleteStock(${i})">Hapus</button>
-          </div>
-        </div>
-        <div class="inline-edit" id="ie_${i}">
-          <div class="form-row r2">
-            <div class="form-group"><label>Lot</label><input type="number" id="e${i}_lot" value="${s.lot}" min="1"></div>
-            <div class="form-group"><label>Avg Price</label><input type="number" id="e${i}_avg" value="${s.avgPrice}"></div>
-          </div>
-          <div class="form-row r3">
-            <div class="form-group"><label>Harga Skrg</label><input type="number" id="e${i}_cur" value="${s.currentPrice}"></div>
-            <div class="form-group"><label>TP1</label><input type="number" id="e${i}_tp1" value="${s.tp1}"></div>
-            <div class="form-group"><label>TP2</label><input type="number" id="e${i}_tp2" value="${s.tp2}"></div>
-          </div>
-          <div class="form-row r2">
-            <div class="form-group"><label>Dividen/saham</label><input type="number" id="e${i}_div" value="${s.dividen||0}"></div>
-            <div class="form-group"><label>Tgl Dividen</label><input type="text" id="e${i}_divdate" value="${s.dividenDate||''}" placeholder="8 Mei 2026"></div>
-          </div>
-          <button class="btn btn-primary" style="margin-top:4px;" onclick="saveStock(${i})">💾 Simpan</button>
-        </div>
-      `;
-      el.appendChild(div);
-    });
-  }
-
-  function toggleEdit(i) {
-    const el = document.getElementById('ie_'+i);
-    el.classList.toggle('open');
-  }
-
-  function saveStock(i) {
-    const s = data.stocks[i];
-    s.lot = parseInt(document.getElementById(`e${i}_lot`).value) || s.lot;
-    s.avgPrice = parseFloat(document.getElementById(`e${i}_avg`).value) || s.avgPrice;
-    s.currentPrice = parseFloat(document.getElementById(`e${i}_cur`).value) || s.currentPrice;
-    s.tp1 = parseFloat(document.getElementById(`e${i}_tp1`).value) || s.tp1;
-    s.tp2 = parseFloat(document.getElementById(`e${i}_tp2`).value) || s.tp2;
-    s.dividen = parseFloat(document.getElementById(`e${i}_div`).value) || 0;
-    s.dividenDate = document.getElementById(`e${i}_divdate`).value || '';
-    renderStockList();
-    showToast('✅ '+s.ticker+' disimpan!');
-  }
-
-  function deleteStock(i) {
-    const ticker = data.stocks[i].ticker;
-    if (!confirm('Hapus '+ticker+' dari portfolio?')) return;
-    data.stocks.splice(i,1);
-    renderStockList();
-    showToast('🗑️ '+ticker+' dihapus', true);
-  }
-
-  function addStock() {
-    const ticker = document.getElementById('nTicker').value.trim().toUpperCase();
-    const lot = parseInt(document.getElementById('nLot').value);
-    const avg = parseFloat(document.getElementById('nAvg').value);
-    const cur = parseFloat(document.getElementById('nCurrent').value);
-    const tp1 = parseFloat(document.getElementById('nTp1').value);
-    const tp2 = parseFloat(document.getElementById('nTp2').value);
-    const div = parseFloat(document.getElementById('nDiv').value) || 0;
-    const divDate = document.getElementById('nDivDate').value.trim();
-
-    if (!ticker || !lot || !avg || !cur) {
-      showToast('⚠️ Lengkapi data dulu!', true); return;
-    }
-    if (data.stocks.find(s => s.ticker === ticker)) {
-      showToast('⚠️ '+ticker+' sudah ada!', true); return;
-    }
-
-    data.stocks.push({ ticker, lot, avgPrice: avg, currentPrice: cur, tp1: tp1||cur*1.1, tp2: tp2||cur*1.3, color: selectedColor, dividen: div, dividenDate: divDate });
-
-    // Reset form
-    ['nTicker','nLot','nAvg','nCurrent','nTp1','nTp2','nDiv','nDivDate'].forEach(id => document.getElementById(id).value='');
-    renderStockList();
-    showToast('✅ '+ticker+' ditambahkan!');
-  }
-
-  function generateCode() {
-    // Save global settings
-    data.owner = document.getElementById('gOwner').value || data.owner;
-    data.lastUpdate = document.getElementById('gLastUpdate').value || data.lastUpdate;
-    data.port1W = parseFloat(document.getElementById('gPort1W').value) || data.port1W;
-    data.ihsg1W = parseFloat(document.getElementById('gIhsg1W').value) || data.ihsg1W;
-    const newPin = document.getElementById('gPin').value;
-    if (newPin && newPin.length === 4) data.adminPin = newPin;
-
-    const code = `// ============================================================
-// DATA PORTFOLIO — edit bagian ini untuk update data saham
-// ============================================================
-const PORTFOLIO_DATA = ${JSON.stringify(data, null, 2)};`;
-
-    const box = document.getElementById('codeOutput');
-    box.style.display = 'block';
-    box.textContent = code;
-    document.getElementById('btnCopy').style.display = 'block';
-    showToast('✅ Kode siap disalin!');
-
-    // Scroll ke code box
-    box.scrollIntoView({ behavior:'smooth', block:'nearest' });
-  }
-
-  function copyCode() {
-    const code = document.getElementById('codeOutput').textContent;
-    navigator.clipboard.writeText(code).then(() => {
-      showToast('📋 Tersalin!');
-    }).catch(() => {
-      showToast('⚠️ Gagal copy, pilih manual', true);
-    });
-  }
-
-  function showToast(msg, isErr=false) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.className = 'toast show' + (isErr?' err':'');
-    setTimeout(() => t.className = 'toast' + (isErr?' err':''), 2500);
-  }
+// ─── UTILS ─────────────────────────────────────────────
+function showToast(msg, isErr=false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show'+(isErr?' err':'');
+  setTimeout(()=>t.className='toast'+(isErr?' err':''), 3000);
+}
 </script>
 </body>
 </html>
