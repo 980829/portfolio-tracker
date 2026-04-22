@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "api/harga.js": {
-      "runtime": "edge"
-    }
-  }
-}
