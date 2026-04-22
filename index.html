@@ -80,6 +80,13 @@
   .g { color:var(--green); } .r { color:var(--red); } .y { color:var(--yellow); }
 
   @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+  .live-status { font-family:'Space Mono',monospace; font-size:10px; padding:5px 10px; border-radius:20px; display:inline-block; margin-top:8px; }
+  .live-status.ok { background:rgba(0,229,160,0.1); color:var(--green); border:1px solid rgba(0,229,160,0.2); }
+  .live-status.loading { background:rgba(255,209,102,0.1); color:var(--yellow); border:1px solid rgba(255,209,102,0.2); animation:pulse 1s infinite; }
+  .live-status.err { background:rgba(255,77,109,0.1); color:var(--red); border:1px solid rgba(255,77,109,0.2); }
+  .live-change { font-size:10px; font-family:'Space Mono',monospace; margin-left:4px; }
 
   .footer { text-align:center; margin-top:24px; font-size:10px; color:var(--muted); font-family:'Space Mono',monospace; padding-bottom:20px; }
 </style>
@@ -134,8 +141,13 @@
   <div class="sec-title">Posisi Saham</div>
   <div id="stockList"></div>
 
+  <div style="text-align:center;margin-bottom:8px;">
+    <div id="liveStatus" class="live-status loading">⏳ Mengambil harga...</div>
+  </div>
+
   <div class="footer">
     <div>⚠️ Bukan rekomendasi investasi</div>
+    <div style="margin-top:4px;">Data diupdate manual via admin panel</div>
   </div>
 </div>
 
@@ -240,7 +252,11 @@
           </div>
           <div class="sc-grid">
             <div class="sc-stat"><label>Avg Price</label><div class="v">Rp${s.avgPrice.toLocaleString()}</div></div>
-            <div class="sc-stat"><label>Harga Skrg</label><div class="v" style="color:${s.currentPrice>=s.avgPrice?'var(--green)':'var(--red)'}">Rp${s.currentPrice.toLocaleString()}</div></div>
+            <div class="sc-stat"><label>Harga Skrg</label>
+              <div class="v" style="color:${s.currentPrice>=s.avgPrice?'var(--green)':'var(--red)'}">Rp${s.currentPrice.toLocaleString()}
+                ${s._livePct!==undefined?'<span class="live-change" style="color:'+(s._livePct>=0?'var(--green)':'var(--red)')+'">('+(s._livePct>=0?'+':'')+s._livePct+'%)</span>':''}
+              </div>
+            </div>
             <div class="sc-stat"><label>Capital P&L</label><div class="v ${s._capPL>=0?'g':'r'}">${s._capPL>=0?'+':''}${fmt(s._capPL)}</div></div>
             <div class="sc-stat"><label>Invested</label><div class="v">${fmt(s._inv)}</div></div>
             <div class="sc-stat"><label>Equity</label><div class="v">${fmt(s._eq)}</div></div>
@@ -262,6 +278,36 @@
         </div>`;
     });
   }
+
+  // ─── REAL-TIME PRICE ──────────────────────────────────
+  async function fetchLivePrices() {
+    const tickers = PORTFOLIO_DATA.stocks.map(s => s.ticker).join(',');
+    const statusEl = document.getElementById('liveStatus');
+    try {
+      statusEl.textContent = '⏳ Mengambil harga...';
+      statusEl.className = 'live-status loading';
+      const res = await fetch('/api/harga?tickers=' + tickers);
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error);
+      PORTFOLIO_DATA.stocks.forEach(s => {
+        if (data.prices[s.ticker]) {
+          s.currentPrice = data.prices[s.ticker].price;
+          s._livePct = data.prices[s.ticker].changePct;
+        }
+      });
+      const now = new Date();
+      PORTFOLIO_DATA.lastUpdate = now.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}) + ' ' + now.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+      statusEl.textContent = '🟢 Live · ' + now.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+      statusEl.className = 'live-status ok';
+      render();
+    } catch(e) {
+      statusEl.textContent = '🔴 Harga manual';
+      statusEl.className = 'live-status err';
+    }
+  }
+
+  fetchLivePrices();
+  setInterval(fetchLivePrices, 60000);
 
   render();
 </script>
