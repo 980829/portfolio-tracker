@@ -1,6 +1,6 @@
 // ============================================================
 // DATA PORTFOLIO — di-generate otomatis via admin panel
-// Last deploy: 22/4/2026, 08.50.55
+// Last deploy: 22/4/2026, 08.52.40
 // ============================================================
 const PORTFOLIO_DATA = {
   "owner": "Fajar",
@@ -56,6 +56,18 @@ const PORTFOLIO_DATA = {
       "color": "#ffd166",
       "dividen": 70,
       "dividenDate": "7 Mei 2026"
+    },
+    {
+      "ticker": "CNMA",
+      "companyName": "Nusantara Sejahtera Raya",
+      "lot": 7,
+      "avgPrice": 106,
+      "currentPrice": 106,
+      "tp1": 117,
+      "tp2": 138,
+      "color": "#00e5a0",
+      "dividen": 0,
+      "dividenDate": ""
     }
   ]
 };
