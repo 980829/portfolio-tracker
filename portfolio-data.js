@@ -1,6 +1,6 @@
 // ============================================================
 // DATA PORTFOLIO — di-generate otomatis via admin panel
-// Last deploy: 22/4/2026, 08.52.40
+// Last deploy: 22/4/2026, 08.54.36
 // ============================================================
 const PORTFOLIO_DATA = {
   "owner": "Fajar",
@@ -30,8 +30,8 @@ const PORTFOLIO_DATA = {
       "tp1": 650,
       "tp2": 750,
       "color": "#f72585",
-      "dividen": 0,
-      "dividenDate": ""
+      "dividen": 50,
+      "dividenDate": "3 Mei 2026"
     },
     {
       "ticker": "DRMA",
@@ -42,8 +42,8 @@ const PORTFOLIO_DATA = {
       "tp1": 1480,
       "tp2": 2148,
       "color": "#00e5a0",
-      "dividen": 0,
-      "dividenDate": ""
+      "dividen": 70,
+      "dividenDate": "5 Mei 2026"
     },
     {
       "ticker": "SSMS",
@@ -54,8 +54,8 @@ const PORTFOLIO_DATA = {
       "tp1": 1480,
       "tp2": 2148,
       "color": "#ffd166",
-      "dividen": 70,
-      "dividenDate": "7 Mei 2026"
+      "dividen": 0,
+      "dividenDate": ""
     },
     {
       "ticker": "CNMA",
