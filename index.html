@@ -234,6 +234,7 @@
           <div class="sc-head">
             <div>
               <div class="sc-ticker" style="color:${s.color}">${s.ticker}</div>
+              <div style="font-size:11px;color:var(--text);font-weight:600;margin-top:1px;">${s.companyName||''}</div>
               <div class="sc-meta">${s.lot} lot · ${s._shares.toLocaleString()} saham</div>
             </div>
             <div class="sc-badge ${isG?'bg':'br'}">${pct(s._netPct)}</div>
