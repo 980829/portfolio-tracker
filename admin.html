@@ -523,9 +523,21 @@ async function deployToGitHub() {
     // Generate file content
     const content = `// ============================================================\n// DATA PORTFOLIO — di-generate otomatis via admin panel\n// Last deploy: ${new Date().toLocaleString('id-ID')}\n// ============================================================\nconst PORTFOLIO_DATA = ${JSON.stringify(data, null, 2)};\n`;
 
+    // Detect default branch first
+    status.textContent = '⏳ Mengecek repo...';
+    const repoRes = await fetch(`https://api.github.com/repos/${user}/${repo}`, {
+      headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!repoRes.ok) {
+      const repoErr = await repoRes.json();
+      throw new Error('Repo tidak ditemukan: ' + (repoErr.message||repoRes.status));
+    }
+    const repoInfo = await repoRes.json();
+    const branch = repoInfo.default_branch || 'main';
+    status.textContent = `⏳ Branch: ${branch} — Mengambil file...`;
+
     // Get current file SHA (required for update)
-    status.textContent = '⏳ Mengambil data file...';
-    const getRes = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/${path}`, {
+    const getRes = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/${path}?ref=${branch}`, {
       headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
     });
 
@@ -540,6 +552,7 @@ async function deployToGitHub() {
     const body = {
       message: `Update portfolio data - ${new Date().toLocaleString('id-ID')}`,
       content: btoa(unescape(encodeURIComponent(content))),
+      branch: branch,
       ...(sha && { sha })
     };
 
@@ -559,7 +572,7 @@ async function deployToGitHub() {
       showToast('🚀 Deploy berhasil!');
     } else {
       const err = await putRes.json();
-      throw new Error(err.message || 'Push gagal');
+      throw new Error(err.message + ' (HTTP ' + putRes.status + ')');
     }
   } catch(e) {
     status.className = 'deploy-status error';
