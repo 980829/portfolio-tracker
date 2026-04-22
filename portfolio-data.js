@@ -1,5 +1,6 @@
 // ============================================================
-// DATA PORTFOLIO — edit bagian ini untuk update data saham
+// DATA PORTFOLIO — di-generate otomatis via admin panel
+// Last deploy: 22/4/2026, 08.50.55
 // ============================================================
 const PORTFOLIO_DATA = {
   "owner": "Fajar",
@@ -53,8 +54,8 @@ const PORTFOLIO_DATA = {
       "tp1": 1480,
       "tp2": 2148,
       "color": "#ffd166",
-      "dividen": 0,
-      "dividenDate": ""
+      "dividen": 70,
+      "dividenDate": "7 Mei 2026"
     }
   ]
 };
