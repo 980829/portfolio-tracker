@@ -1,5 +1,6 @@
 // ============================================================
-// DATA PORTFOLIO — edit bagian ini untuk update data saham
+// DATA PORTFOLIO — di-generate otomatis via admin panel
+// Last deploy: 23/4/2026, 11.18.55
 // ============================================================
 const PORTFOLIO_DATA = {
   "owner": "Fajar",
@@ -15,7 +16,7 @@ const PORTFOLIO_DATA = {
       "companyName": "Bank Rakyat Indonesia",
       "lot": 7,
       "avgPrice": 3855,
-      "currentPrice": 3270,
+      "currentPrice": 3210,
       "tp1": 3855,
       "tp2": 4200,
       "color": "#4cc9f0",
@@ -27,34 +28,46 @@ const PORTFOLIO_DATA = {
       "companyName": "Bank Pembangunan Daerah Jawa Timur",
       "lot": 4,
       "avgPrice": 570,
-      "currentPrice": 595,
+      "currentPrice": 600,
       "tp1": 650,
       "tp2": 750,
       "color": "#f72585",
-      "dividen": 0,
-      "dividenDate": ""
+      "dividen": 50,
+      "dividenDate": "9 Mei 2026"
     },
     {
       "ticker": "DRMA",
       "companyName": "Dharma Polimetal",
       "lot": 35,
       "avgPrice": 977,
-      "currentPrice": 1040,
+      "currentPrice": 1035,
       "tp1": 1480,
       "tp2": 2148,
       "color": "#00e5a0",
-      "dividen": 0,
-      "dividenDate": ""
+      "dividen": 70,
+      "dividenDate": "7 Mei 2026"
     },
     {
       "ticker": "SSMS",
       "companyName": "Sawit Sumbermas Sarana",
       "lot": 11,
       "avgPrice": 1352,
-      "currentPrice": 1365,
+      "currentPrice": 1440,
       "tp1": 1480,
       "tp2": 2148,
       "color": "#ffd166",
+      "dividen": 0,
+      "dividenDate": ""
+    },
+    {
+      "ticker": "KBAG",
+      "companyName": "Karya Bersama Anugrah",
+      "lot": 400,
+      "avgPrice": 50,
+      "currentPrice": 54,
+      "tp1": 59,
+      "tp2": 70,
+      "color": "#118ab2",
       "dividen": 0,
       "dividenDate": ""
     }
