@@ -114,14 +114,14 @@
     </div>
     <div class="bench-row">
       <div class="bench-box">
-        <label>Portfolio 1W</label>
+        <label>Portfolio 1W <span style="color:var(--green);font-size:9px;">● auto</span></label>
         <div class="bench-val" id="bPort">—</div>
-        <div class="bench-sub">return minggu ini</div>
+        <div class="bench-sub">vs snapshot mingguan</div>
       </div>
       <div class="bench-box">
-        <label>IHSG 1W</label>
+        <label>IHSG 1W <span style="color:var(--green);font-size:9px;">● live</span></label>
         <div class="bench-val" id="bIhsg">—</div>
-        <div class="bench-sub">benchmark</div>
+        <div class="bench-sub">^JKSE hari ini</div>
       </div>
     </div>
     <div class="alpha-row">
@@ -306,9 +306,70 @@
     }
   }
 
+  // ─── IHSG REAL-TIME ───────────────────────────────────
+  async function fetchIhsg() {
+    try {
+      const encoded = encodeURIComponent('https://query1.finance.yahoo.com/v7/finance/quote?symbols=%5EJKSE&fields=regularMarketPrice,regularMarketChangePercent');
+      const res = await fetch('https://api.allorigins.win/get?url=' + encoded);
+      const raw = await res.json();
+      const data = JSON.parse(raw.contents);
+      const q = data?.quoteResponse?.result?.[0];
+      if (q) {
+        PORTFOLIO_DATA.ihsg1W = parseFloat(q.regularMarketChangePercent.toFixed(2));
+      }
+    } catch(e) {
+      console.log('IHSG fetch failed:', e);
+    }
+  }
+
+  // ─── PORTFOLIO 1W AUTO ────────────────────────────────
+  function calcPortfolio1W() {
+    const D = PORTFOLIO_DATA;
+    if (!D.snapshotEquity || !D.snapshotDate) return;
+
+    // Hitung total equity sekarang
+    let totalEquity = 0;
+    D.stocks.forEach(s => {
+      totalEquity += (s.lot * 100) * s.currentPrice;
+    });
+
+    const pct = ((totalEquity - D.snapshotEquity) / D.snapshotEquity) * 100;
+    D.port1W = parseFloat(pct.toFixed(2));
+  }
+
+  // ─── WEEKLY SNAPSHOT ─────────────────────────────────
+  function updateWeeklySnapshot() {
+    const D = PORTFOLIO_DATA;
+    const now = new Date();
+    const snapshotDate = D.snapshotDate ? new Date(D.snapshotDate) : null;
+
+    // Update snapshot setiap Senin atau jika belum ada
+    const isMonday = now.getDay() === 1;
+    const isOldSnapshot = !snapshotDate || (now - snapshotDate) > 7 * 24 * 60 * 60 * 1000;
+
+    if (!snapshotDate || (isMonday && isOldSnapshot)) {
+      let totalEquity = 0;
+      D.stocks.forEach(s => {
+        totalEquity += (s.lot * 100) * s.currentPrice;
+      });
+      D.snapshotEquity = totalEquity;
+      D.snapshotDate = now.toISOString();
+      console.log('Snapshot updated:', totalEquity);
+    }
+  }
+
+  async function initData() {
+    await fetchIhsg();
+    updateWeeklySnapshot();
+    calcPortfolio1W();
+    render();
+  }
+
   fetchLivePrices();
   setInterval(fetchLivePrices, 60000);
+  setInterval(fetchIhsg, 300000); // refresh IHSG tiap 5 menit
 
+  initData();
   render();
 </script>
 </body>

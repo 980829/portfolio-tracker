@@ -1,12 +1,13 @@
 // ============================================================
-// DATA PORTFOLIO — di-generate otomatis via admin panel
-// Last deploy: 23/4/2026, 11.05.58
+// DATA PORTFOLIO — edit bagian ini untuk update data saham
 // ============================================================
 const PORTFOLIO_DATA = {
   "owner": "Fajar",
-  "lastUpdate": "23 Apr 2026",
+  "lastUpdate": "22 Apr 2026",
   "ihsg1W": -1.52,
   "port1W": 0.33,
+  "snapshotEquity": null,
+  "snapshotDate": null,
   "adminPin": "1234",
   "stocks": [
     {
@@ -14,7 +15,7 @@ const PORTFOLIO_DATA = {
       "companyName": "Bank Rakyat Indonesia",
       "lot": 7,
       "avgPrice": 3855,
-      "currentPrice": 3210,
+      "currentPrice": 3270,
       "tp1": 3855,
       "tp2": 4200,
       "color": "#4cc9f0",
@@ -26,12 +27,12 @@ const PORTFOLIO_DATA = {
       "companyName": "Bank Pembangunan Daerah Jawa Timur",
       "lot": 4,
       "avgPrice": 570,
-      "currentPrice": 600,
+      "currentPrice": 595,
       "tp1": 650,
       "tp2": 750,
       "color": "#f72585",
-      "dividen": 50,
-      "dividenDate": "3 Mei 2026"
+      "dividen": 0,
+      "dividenDate": ""
     },
     {
       "ticker": "DRMA",
@@ -42,42 +43,18 @@ const PORTFOLIO_DATA = {
       "tp1": 1480,
       "tp2": 2148,
       "color": "#00e5a0",
-      "dividen": 70,
-      "dividenDate": "5 Mei 2026"
+      "dividen": 0,
+      "dividenDate": ""
     },
     {
       "ticker": "SSMS",
       "companyName": "Sawit Sumbermas Sarana",
       "lot": 11,
       "avgPrice": 1352,
-      "currentPrice": 1435,
+      "currentPrice": 1365,
       "tp1": 1480,
       "tp2": 2148,
       "color": "#ffd166",
-      "dividen": 0,
-      "dividenDate": ""
-    },
-    {
-      "ticker": "CNMA",
-      "companyName": "Nusantara Sejahtera Raya",
-      "lot": 7,
-      "avgPrice": 106,
-      "currentPrice": 106,
-      "tp1": 117,
-      "tp2": 138,
-      "color": "#00e5a0",
-      "dividen": 0,
-      "dividenDate": ""
-    },
-    {
-      "ticker": "KBAG",
-      "companyName": "Karya Bersama Anugrah",
-      "lot": 400,
-      "avgPrice": 50,
-      "currentPrice": 54,
-      "tp1": 59,
-      "tp2": 70,
-      "color": "#00e5a0",
       "dividen": 0,
       "dividenDate": ""
     }

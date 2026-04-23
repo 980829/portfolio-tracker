@@ -195,15 +195,19 @@
         <input type="text" id="gLastUpdate" placeholder="22 Apr 2026">
       </div>
     </div>
-    <div class="form-row r3">
+    <div class="form-row r2">
       <div class="form-group">
         <label>Portfolio 1W (%)</label>
-        <input type="number" id="gPort1W" step="0.01" placeholder="0.33">
+        <input type="number" id="gPort1W" step="0.01" placeholder="auto">
+        <span style="font-size:10px;color:var(--green);">● Dihitung otomatis</span>
       </div>
       <div class="form-group">
         <label>IHSG 1W (%)</label>
-        <input type="number" id="gIhsg1W" step="0.01" placeholder="-1.52">
+        <input type="number" id="gIhsg1W" step="0.01" placeholder="auto">
+        <span style="font-size:10px;color:var(--green);">● Fetch dari Yahoo</span>
       </div>
+    </div>
+    <div class="form-row">
       <div class="form-group">
         <label>PIN Baru</label>
         <input type="number" id="gPin" placeholder="1234" maxlength="4">
