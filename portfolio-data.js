@@ -1,10 +1,10 @@
 // ============================================================
 // DATA PORTFOLIO — di-generate otomatis via admin panel
-// Last deploy: 22/4/2026, 08.54.36
+// Last deploy: 23/4/2026, 11.05.58
 // ============================================================
 const PORTFOLIO_DATA = {
   "owner": "Fajar",
-  "lastUpdate": "22 Apr 2026",
+  "lastUpdate": "23 Apr 2026",
   "ihsg1W": -1.52,
   "port1W": 0.33,
   "adminPin": "1234",
@@ -14,7 +14,7 @@ const PORTFOLIO_DATA = {
       "companyName": "Bank Rakyat Indonesia",
       "lot": 7,
       "avgPrice": 3855,
-      "currentPrice": 3270,
+      "currentPrice": 3210,
       "tp1": 3855,
       "tp2": 4200,
       "color": "#4cc9f0",
@@ -26,7 +26,7 @@ const PORTFOLIO_DATA = {
       "companyName": "Bank Pembangunan Daerah Jawa Timur",
       "lot": 4,
       "avgPrice": 570,
-      "currentPrice": 595,
+      "currentPrice": 600,
       "tp1": 650,
       "tp2": 750,
       "color": "#f72585",
@@ -50,7 +50,7 @@ const PORTFOLIO_DATA = {
       "companyName": "Sawit Sumbermas Sarana",
       "lot": 11,
       "avgPrice": 1352,
-      "currentPrice": 1365,
+      "currentPrice": 1435,
       "tp1": 1480,
       "tp2": 2148,
       "color": "#ffd166",
@@ -65,6 +65,18 @@ const PORTFOLIO_DATA = {
       "currentPrice": 106,
       "tp1": 117,
       "tp2": 138,
+      "color": "#00e5a0",
+      "dividen": 0,
+      "dividenDate": ""
+    },
+    {
+      "ticker": "KBAG",
+      "companyName": "Karya Bersama Anugrah",
+      "lot": 400,
+      "avgPrice": 50,
+      "currentPrice": 54,
+      "tp1": 59,
+      "tp2": 70,
       "color": "#00e5a0",
       "dividen": 0,
       "dividenDate": ""
