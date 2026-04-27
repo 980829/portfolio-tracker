@@ -1,11 +1,11 @@
 // ============================================================
 // DATA PORTFOLIO — di-generate otomatis via admin panel
-// Last deploy: 23/4/2026, 11.18.55
+// Last deploy: 27/4/2026, 22.07.50
 // ============================================================
 const PORTFOLIO_DATA = {
   "owner": "Fajar",
   "lastUpdate": "22 Apr 2026",
-  "ihsg1W": -1.52,
+  "ihsg1W": -6.52,
   "port1W": 0.33,
   "snapshotEquity": null,
   "snapshotDate": null,
@@ -16,7 +16,7 @@ const PORTFOLIO_DATA = {
       "companyName": "Bank Rakyat Indonesia",
       "lot": 7,
       "avgPrice": 3855,
-      "currentPrice": 3210,
+      "currentPrice": 3050,
       "tp1": 3855,
       "tp2": 4200,
       "color": "#4cc9f0",
@@ -28,7 +28,7 @@ const PORTFOLIO_DATA = {
       "companyName": "Bank Pembangunan Daerah Jawa Timur",
       "lot": 4,
       "avgPrice": 570,
-      "currentPrice": 600,
+      "currentPrice": 575,
       "tp1": 650,
       "tp2": 750,
       "color": "#f72585",
@@ -40,7 +40,7 @@ const PORTFOLIO_DATA = {
       "companyName": "Dharma Polimetal",
       "lot": 35,
       "avgPrice": 977,
-      "currentPrice": 1035,
+      "currentPrice": 1050,
       "tp1": 1480,
       "tp2": 2148,
       "color": "#00e5a0",
@@ -50,9 +50,9 @@ const PORTFOLIO_DATA = {
     {
       "ticker": "SSMS",
       "companyName": "Sawit Sumbermas Sarana",
-      "lot": 11,
-      "avgPrice": 1352,
-      "currentPrice": 1440,
+      "lot": 18,
+      "avgPrice": 1367,
+      "currentPrice": 1430,
       "tp1": 1480,
       "tp2": 2148,
       "color": "#ffd166",
@@ -63,7 +63,7 @@ const PORTFOLIO_DATA = {
       "ticker": "KBAG",
       "companyName": "Karya Bersama Anugrah",
       "lot": 400,
-      "avgPrice": 50,
+      "avgPrice": 52,
       "currentPrice": 54,
       "tp1": 59,
       "tp2": 70,
