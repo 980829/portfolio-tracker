@@ -1,11 +1,11 @@
 // ============================================================
 // DATA PORTFOLIO — di-generate otomatis via admin panel
-// Last deploy: 27/4/2026, 22.07.50
+// Last deploy: 7/5/2026, 19.38.57
 // ============================================================
 const PORTFOLIO_DATA = {
   "owner": "Fajar",
-  "lastUpdate": "22 Apr 2026",
-  "ihsg1W": -6.52,
+  "lastUpdate": "7 Mei 2026",
+  "ihsg1W": 1.03,
   "port1W": 0.33,
   "snapshotEquity": null,
   "snapshotDate": null,
@@ -28,7 +28,7 @@ const PORTFOLIO_DATA = {
       "companyName": "Bank Pembangunan Daerah Jawa Timur",
       "lot": 4,
       "avgPrice": 570,
-      "currentPrice": 575,
+      "currentPrice": 595,
       "tp1": 650,
       "tp2": 750,
       "color": "#f72585",
@@ -68,6 +68,30 @@ const PORTFOLIO_DATA = {
       "tp1": 59,
       "tp2": 70,
       "color": "#118ab2",
+      "dividen": 0,
+      "dividenDate": ""
+    },
+    {
+      "ticker": "DMAS",
+      "companyName": "Puradelta Lestari",
+      "lot": 103,
+      "avgPrice": 143,
+      "currentPrice": 151,
+      "tp1": 166,
+      "tp2": 196,
+      "color": "#00e5a0",
+      "dividen": 0,
+      "dividenDate": ""
+    },
+    {
+      "ticker": "CNMA",
+      "companyName": "Nusantara Sejahtera Raya",
+      "lot": 33,
+      "avgPrice": 104,
+      "currentPrice": 104,
+      "tp1": 114,
+      "tp2": 135,
+      "color": "#00e5a0",
       "dividen": 0,
       "dividenDate": ""
     }
