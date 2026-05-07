@@ -1,12 +1,12 @@
 // ============================================================
 // DATA PORTFOLIO — di-generate otomatis via admin panel
-// Last deploy: 7/5/2026, 19.38.57
+// Last deploy: 7/5/2026, 19.40.06
 // ============================================================
 const PORTFOLIO_DATA = {
   "owner": "Fajar",
   "lastUpdate": "7 Mei 2026",
   "ihsg1W": 1.03,
-  "port1W": 0.33,
+  "port1W": 4.4,
   "snapshotEquity": null,
   "snapshotDate": null,
   "adminPin": "1234",
